@@ -82,9 +82,7 @@ def _stockfish_pair(
         msg = "stockfish data games need a Stockfish binary"
         raise EngineUnavailableError(msg)
     low, high = _STOCKFISH_ELO_RANGE
-    return [
-        stockfish.open(int(rng.integers(low, high + 1)), _STOCKFISH_MOVE_MS) for _ in range(2)
-    ]
+    return [stockfish.open(int(rng.integers(low, high + 1)), _STOCKFISH_MOVE_MS) for _ in range(2)]
 
 
 def _engine(
