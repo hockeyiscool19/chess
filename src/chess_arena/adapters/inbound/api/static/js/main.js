@@ -47,6 +47,7 @@ async function engineChip() {
 
 window.addEventListener("hashchange", () => {
   route();
+  engineChip();
   document.getElementById("main").focus({ preventScroll: true });
 });
 route();
