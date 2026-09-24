@@ -1,0 +1,108 @@
+{
+  "ladder_id": "ladder-v1",
+  "version": "1",
+  "games_per_rung": 8,
+  "pass_score": 0.55,
+  "max_plies": 300,
+  "candidate_max_seconds_per_move": 1.0,
+  "rungs": [
+    {
+      "rung_id": "random",
+      "label": "Random mover",
+      "engine": {"family": "random"},
+      "nominal_elo": 250,
+      "description": "Plays a uniformly random legal move."
+    },
+    {
+      "rung_id": "greedy",
+      "label": "Greedy capturer",
+      "engine": {"family": "greedy"},
+      "nominal_elo": 500,
+      "description": "Mates in one when it can, otherwise grabs the most material available."
+    },
+    {
+      "rung_id": "minimax-1",
+      "label": "Minimax, 1 ply",
+      "engine": {"family": "minimax", "depth": 1},
+      "nominal_elo": 800,
+      "description": "One-ply alpha-beta with capture resolution over material and piece-square terms."
+    },
+    {
+      "rung_id": "minimax-2",
+      "label": "Minimax, 2 ply",
+      "engine": {"family": "minimax", "depth": 2},
+      "nominal_elo": 1000,
+      "description": "Two-ply alpha-beta over the same hand-written evaluation."
+    },
+    {
+      "rung_id": "minimax-3",
+      "label": "Minimax, 3 ply",
+      "engine": {"family": "minimax", "depth": 3},
+      "nominal_elo": 1200,
+      "description": "Three-ply alpha-beta over the same hand-written evaluation."
+    },
+    {
+      "rung_id": "stockfish-1320",
+      "label": "Stockfish 1320",
+      "engine": {"family": "stockfish", "elo": 1320, "move_time_ms": 50},
+      "nominal_elo": 1320,
+      "description": "Stockfish at its weakest UCI_Elo setting, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-1500",
+      "label": "Stockfish 1500",
+      "engine": {"family": "stockfish", "elo": 1500, "move_time_ms": 50},
+      "nominal_elo": 1500,
+      "description": "Stockfish limited to UCI_Elo 1500, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-1700",
+      "label": "Stockfish 1700",
+      "engine": {"family": "stockfish", "elo": 1700, "move_time_ms": 50},
+      "nominal_elo": 1700,
+      "description": "Stockfish limited to UCI_Elo 1700, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-2000",
+      "label": "Stockfish 2000",
+      "engine": {"family": "stockfish", "elo": 2000, "move_time_ms": 50},
+      "nominal_elo": 2000,
+      "description": "Stockfish limited to UCI_Elo 2000, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-2300",
+      "label": "Stockfish 2300",
+      "engine": {"family": "stockfish", "elo": 2300, "move_time_ms": 50},
+      "nominal_elo": 2300,
+      "description": "Stockfish limited to UCI_Elo 2300, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-2600",
+      "label": "Stockfish 2600",
+      "engine": {"family": "stockfish", "elo": 2600, "move_time_ms": 50},
+      "nominal_elo": 2600,
+      "description": "Stockfish limited to UCI_Elo 2600, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-2900",
+      "label": "Stockfish 2900",
+      "engine": {"family": "stockfish", "elo": 2900, "move_time_ms": 50},
+      "nominal_elo": 2900,
+      "description": "Stockfish limited to UCI_Elo 2900, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-3190",
+      "label": "Stockfish 3190",
+      "engine": {"family": "stockfish", "elo": 3190, "move_time_ms": 50},
+      "nominal_elo": 3190,
+      "description": "Stockfish at its strongest UCI_Elo setting, 50 ms per move."
+    },
+    {
+      "rung_id": "stockfish-full",
+      "label": "Stockfish (full strength)",
+      "engine": {"family": "stockfish", "move_time_ms": 100},
+      "nominal_elo": 3500,
+      "description": "Unrestricted Stockfish, 100 ms per move. Beating this rung is the institute's goal."
+    }
+  ]
+}

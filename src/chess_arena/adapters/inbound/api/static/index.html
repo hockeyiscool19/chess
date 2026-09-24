@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chess Arena</title>
+    <meta name="description" content="Play chess bots, watch models climb the engine ladder, and replay games." />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script type="module" src="/static/js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#/play" aria-label="Chess Arena home">
+          <span class="brand-mark" aria-hidden="true">&#9822;&#xFE0E;</span>
+          <span>Chess Arena</span>
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#/play" data-nav="play">Play</a></li>
+            <li><a href="#/ladder" data-nav="ladder">Ladder</a></li>
+            <li><a href="#/models" data-nav="models">Models</a></li>
+            <li><a href="#/games" data-nav="games">Games</a></li>
+          </ul>
+        </nav>
+        <p class="engine-chip" id="engine-chip" role="status">Checking engines&hellip;</p>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <div id="app-error" class="alert" role="alert" hidden></div>
+      <div id="view"></div>
+    </main>
+    <footer class="footer">
+      <p>
+        Opponents range from a random mover to full-strength Stockfish. Models are
+        trained by the chess institute and published here through the
+        <a href="/docs">HTTP API</a>.
+      </p>
+    </footer>
+    <div id="announcer" class="visually-hidden" role="status" aria-live="polite"></div>
+    <dialog id="promotion" aria-labelledby="promotion-title">
+      <form method="dialog" class="promotion-form">
+        <h2 id="promotion-title">Promote pawn to</h2>
+        <div class="promotion-choices">
+          <button value="q" type="submit"><span aria-hidden="true" class="promo-glyph">&#9819;&#xFE0E;</span> Queen</button>
+          <button value="r" type="submit"><span aria-hidden="true" class="promo-glyph">&#9820;&#xFE0E;</span> Rook</button>
+          <button value="b" type="submit"><span aria-hidden="true" class="promo-glyph">&#9821;&#xFE0E;</span> Bishop</button>
+          <button value="n" type="submit"><span aria-hidden="true" class="promo-glyph">&#9822;&#xFE0E;</span> Knight</button>
+        </div>
+        <button value="cancel" type="submit" class="button-quiet">Cancel</button>
+      </form>
+    </dialog>
+  </body>
+</html>

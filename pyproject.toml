@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chess-arena"
+version = "0.1.0"
+description = "Chess web app and engine arena: play bots, climb an engine ladder, train value-network models."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chess>=1.11",
+    "fastapi>=0.115",
+    "numpy>=2.0",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "uvicorn>=0.32",
+]
+
+[project.scripts]
+chess-arena = "chess_arena.adapters.inbound.cli:main"
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.13.0",
+    "pyright>=1.1.414",
+    "pytest>=8.3",
+    "pytest-timeout>=2.3",
+    "pytest-xdist>=3.6",
+    "ruff>=0.16.8",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+chess_arena = [
+    "py.typed",
+    "adapters/inbound/api/static/*",
+    "adapters/inbound/api/static/js/*",
+    "adapters/outbound/ladders/*.json",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = [
+    "F", "E", "W",
+    "I", "N", "UP",
+    "ANN", "ASYNC", "S", "B", "A", "C4",
+    "DTZ", "T10", "EXE", "ISC", "ICN",
+    "LOG", "G", "PIE", "PT", "Q", "RSE", "RET",
+    "SLF", "SIM", "TID", "TC", "ARG", "PTH",
+    "FLY", "PERF", "PL", "TRY", "FURB", "RUF",
+    "D",
+]
+ignore = ["S101"]
+unfixable = ["B"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "ARG001", "D", "PLR2004"]
+"scripts/**" = ["T201"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.isort]
+known-first-party = ["chess_arena", "tests"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.12"
+include = ["src", "tests", "scripts"]
+reportUnknownArgumentType = true
+reportUnknownMemberType = true
+reportUnknownVariableType = true
+reportUnknownParameterType = true
+reportMissingTypeArgument = true
+reportUnnecessaryCast = true
+reportUnnecessaryTypeIgnoreComment = true
+reportUnusedImport = true
+reportUnusedVariable = true
+reportUnusedCallResult = "warning"
+
+[tool.pytest.ini_options]
+addopts = "-n auto --dist loadscope --timeout=120 --import-mode=importlib"
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+timeout = 120

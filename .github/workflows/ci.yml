@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Stockfish
+        run: sudo apt-get update && sudo apt-get install -y stockfish
+      - uses: astral-sh/setup-uv@v6
+      - name: Sync
+        run: uv sync --frozen
+      - name: Gates
+        env:
+          CHESS_ARENA_STOCKFISH: /usr/games/stockfish
+        run: uv run python scripts/gates.py

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+# Arena state: games, models, jobs (CHESS_ARENA_HOME defaults to ./var)
+var/
+*.egg-info/
+build/
+dist/
